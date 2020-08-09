@@ -58,6 +58,9 @@ public class Controller : MonoBehaviour
     List<string> standings = new List<string>();
 
     public GameObject FinalText;
+    public Text BetAmount;
+    public Dropdown BetDD;
+    public Text WinAmount;
 
     // Update is called once per frame
     void Start()
@@ -90,17 +93,8 @@ public class Controller : MonoBehaviour
                 roller3.StopAllCoroutines();
                 roller4.StopAllCoroutines();
                 roller5.StopAllCoroutines();
-                for(int i = 0; i<5; i++)
-                {
-                    if (bets[i] == standings[i])
-                    {
-                        Debug.Log("You got bet " + i + " correct");
-                    }
-                    else
-                    {
-                        Debug.Log("You got bet " + i + " incorrrect");
-                    }
-                }
+
+                CalculateWinnings();
                 break;
             }
             if (roller1.rollTotal >= 100 && one)
@@ -314,5 +308,74 @@ public class Controller : MonoBehaviour
     public void Restart()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ChangeBetAmount()
+    {
+        switch (BetDD.value)
+        {
+            case 0:
+                BetAmount.text = "$10";
+                break;
+            case 1:
+                BetAmount.text = "$100";
+                break;
+            case 2:
+                BetAmount.text = "$1000";
+                break;
+
+        }
+    }
+
+    public void CalculateWinnings()
+    {
+        int bet = 0;
+        switch (BetDD.value)
+        {
+            case 0:
+                bet = 10;
+                break;
+            case 1:
+                bet = 100;
+                break;
+            case 2:
+                bet = 1000;
+                break;
+        }
+
+        List<int> winnings = new List<int>();
+
+        int countwins = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            if (bets[i] == standings[i])
+            {
+                winnings.Add(5-i);
+                countwins++;
+                Debug.Log("You got bet " + i + " correct");
+            }
+            else
+            {
+                winnings.Add(1);
+                Debug.Log("You got bet " + i + " incorrrect");
+            }
+        }
+        
+
+        foreach (int ints in winnings){
+            if (ints != 1)
+            {
+                bet = bet * ints / 2;
+            }
+        }
+
+        
+        if(countwins == 0)
+        {
+            bet = 0;
+        }
+        WinAmount.text = bet.ToString();
+        
+
     }
 }
