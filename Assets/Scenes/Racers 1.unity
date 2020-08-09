@@ -443,7 +443,7 @@ MonoBehaviour:
   Dice4: {fileID: 21300000, guid: a55363f35f2f7624c986bdcac079d382, type: 3}
   Dice5: {fileID: 21300000, guid: a7b09cf7238b57b4bb55e21d07eee77f, type: 3}
   Dice6: {fileID: 21300000, guid: 1ae41c08cf17f034e84e340beab51a45, type: 3}
-  DiceSlot: {fileID: 0}
+  DiceSlot: {fileID: 127264887}
 --- !u!114 &322057789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   Dice4: {fileID: 21300000, guid: a55363f35f2f7624c986bdcac079d382, type: 3}
   Dice5: {fileID: 21300000, guid: a7b09cf7238b57b4bb55e21d07eee77f, type: 3}
   Dice6: {fileID: 21300000, guid: 1ae41c08cf17f034e84e340beab51a45, type: 3}
-  DiceSlot: {fileID: 0}
+  DiceSlot: {fileID: 1602859298}
 --- !u!114 &1619743768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2440,7 +2440,7 @@ MonoBehaviour:
   Dice4: {fileID: 21300000, guid: a55363f35f2f7624c986bdcac079d382, type: 3}
   Dice5: {fileID: 21300000, guid: a7b09cf7238b57b4bb55e21d07eee77f, type: 3}
   Dice6: {fileID: 21300000, guid: 1ae41c08cf17f034e84e340beab51a45, type: 3}
-  DiceSlot: {fileID: 0}
+  DiceSlot: {fileID: 514722741}
 --- !u!114 &1701930963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   Dice4: {fileID: 21300000, guid: a55363f35f2f7624c986bdcac079d382, type: 3}
   Dice5: {fileID: 21300000, guid: a7b09cf7238b57b4bb55e21d07eee77f, type: 3}
   Dice6: {fileID: 21300000, guid: 1ae41c08cf17f034e84e340beab51a45, type: 3}
-  DiceSlot: {fileID: 0}
+  DiceSlot: {fileID: 1086379077}
 --- !u!114 &1835894057
 MonoBehaviour:
   m_ObjectHideFlags: 0

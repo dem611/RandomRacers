@@ -20,6 +20,8 @@ public class Roller : MonoBehaviour
     Sprite[] DiceArray;
 
     public Image DiceSlot;
+
+    bool isPaused = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,41 @@ public class Roller : MonoBehaviour
     {
         currentRoll = Mathf.RoundToInt(Random.RandomRange(1.0f, 6.0f));
         rollTotal += currentRoll;
-        GetComponentInChildren<Text>().text = currentRoll.ToString();
+        //GetComponentInChildren<Text>().text = currentRoll.ToString();
+        switch (currentRoll)
+        {
+            case 1:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[0];
+                StartCoroutine(WaitTime(3f));
+                break;
+            case 2:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[1];
+                StartCoroutine(WaitTime(3f));
+                break;
+            case 3:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[2];
+                StartCoroutine(WaitTime(3f));
+                break;
+            case 4:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[3];
+                StartCoroutine(WaitTime(3f));
+                break;
+            case 5:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[4];
+                StartCoroutine(WaitTime(3f));
+                break;
+            case 6:
+                StopCoroutine(RollAnim());
+                DiceSlot.sprite = DiceArray[5];
+                StartCoroutine(WaitTime(3f));
+                break;
+
+        }
         if(rollTotal > 100)
         {
             //SAVE NUMBER FOR TIEBREAKER
@@ -50,13 +86,15 @@ public class Roller : MonoBehaviour
 
     IEnumerator Rolling()
     {
+
         StartCoroutine(RollAnim());
         while (true)
         {
-
-            //yield return new WaitForSeconds(2.0f);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2.0f);
+            isPaused = true;
             Roll();
+            yield return new WaitForSeconds(3f);
+            isPaused = false;
         }
     }
 
@@ -65,9 +103,18 @@ public class Roller : MonoBehaviour
         int counterdice = 0;
         while (true)
         {
+            while (isPaused)
+            {
+                yield return null;
+            }
             DiceSlot.sprite = DiceArray[counterdice % 6];
             counterdice++;
             yield return new WaitForSeconds(.1f);
         }
+    }
+
+    IEnumerator WaitTime(float sec)
+    {
+        yield return new WaitForSeconds(sec);
     }
 }
