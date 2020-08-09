@@ -35,7 +35,7 @@ public class Roller : MonoBehaviour
     {
         currentRoll = Mathf.RoundToInt(Random.RandomRange(1.0f, 6.0f));
         rollTotal += currentRoll;
-        //GetComponentInChildren<Text>().text = currentRoll.ToString();
+        GetComponentInChildren<Text>().text = rollTotal.ToString();
         switch (currentRoll)
         {
             case 1:
