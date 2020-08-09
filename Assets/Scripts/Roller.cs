@@ -9,9 +9,21 @@ public class Roller : MonoBehaviour
     public int rollTotal = 0;
     public int whichRoller;
     float screenPos;
+
+    public Sprite Dice1;
+    public Sprite Dice2;
+    public Sprite Dice3;
+    public Sprite Dice4;
+    public Sprite Dice5;
+    public Sprite Dice6;
+
+    Sprite[] DiceArray;
+
+    public Image DiceSlot;
     // Start is called before the first frame update
     void Start()
     {
+        DiceArray = new Sprite[] { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 };
         StartCoroutine(Rolling()); 
     }
 
@@ -38,12 +50,24 @@ public class Roller : MonoBehaviour
 
     IEnumerator Rolling()
     {
+        StartCoroutine(RollAnim());
         while (true)
         {
 
             //yield return new WaitForSeconds(2.0f);
             yield return new WaitForSeconds(1f);
             Roll();
+        }
+    }
+
+    IEnumerator RollAnim()
+    {
+        int counterdice = 0;
+        while (true)
+        {
+            DiceSlot.sprite = DiceArray[counterdice % 6];
+            counterdice++;
+            yield return new WaitForSeconds(.1f);
         }
     }
 }
