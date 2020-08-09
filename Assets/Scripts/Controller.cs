@@ -37,6 +37,7 @@ public class Controller : MonoBehaviour
     public GameObject place5;
 
     public GameObject finishline;
+    List<string> bets = new List<string>();
     // Update is called once per frame
     void Start()
     {
@@ -219,6 +220,16 @@ public class Controller : MonoBehaviour
                 five = false;
                 continue;
             }
+        }
+    }
+
+
+    public void PlaceBetOn(string fruit)
+    {
+        bets.Add(fruit);
+        foreach (string fruits in bets)
+        {
+            Debug.Log(fruits);
         }
     }
 }

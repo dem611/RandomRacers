@@ -70,7 +70,8 @@ public class Roller : MonoBehaviour
                 break;
 
         }
-        if(rollTotal >= 100)
+        if(rollTotal >=
+            100)
         {
             //SAVE NUMBER FOR TIEBREAKER
             rollTotal = 100;
