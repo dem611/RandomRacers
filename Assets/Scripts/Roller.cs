@@ -70,7 +70,7 @@ public class Roller : MonoBehaviour
                 break;
 
         }
-        if(rollTotal > 100)
+        if(rollTotal >= 100)
         {
             //SAVE NUMBER FOR TIEBREAKER
             rollTotal = 100;
@@ -90,10 +90,10 @@ public class Roller : MonoBehaviour
         StartCoroutine(RollAnim());
         while (true)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.5f);
             isPaused = true;
             Roll();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
             isPaused = false;
         }
     }

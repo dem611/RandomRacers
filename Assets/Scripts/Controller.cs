@@ -40,7 +40,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        finishline.transform.position = new Vector3((Screen.width - 100), finishline.transform.position.y, finishline.transform.position.z);
+        //finishline.transform.position = new Vector3((Screen.width - 100), finishline.transform.position.y, finishline.transform.position.z);
         StartCoroutine(Controllers());
     }
     
