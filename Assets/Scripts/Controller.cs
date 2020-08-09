@@ -43,16 +43,27 @@ public class Controller : MonoBehaviour
     public GameObject ThirdBet;
     public GameObject FourthBet;
     public GameObject FifthBet;
+    public GameObject FirstBetTop;
+    public GameObject SecondBetTop;
+    public GameObject ThirdBetTop;
+    public GameObject FourthBetTop;
+    public GameObject FifthBetTop;
     GameObject[] BetSprites;
+    GameObject[] BetSpritesTop;
 
     public GameObject PlayButton;
 
     int betcounter = 0;
     List<string> bets = new List<string>();
+    List<string> standings = new List<string>();
+
+    public GameObject FinalText;
+
     // Update is called once per frame
     void Start()
     {
         BetSprites = new GameObject[] { FirstBet, SecondBet, ThirdBet, FourthBet, FifthBet };
+        BetSpritesTop = new GameObject[] { FirstBetTop, SecondBetTop, ThirdBetTop, FourthBetTop, FifthBetTop };
         StartCoroutine(Controllers());
     }
 
@@ -79,16 +90,29 @@ public class Controller : MonoBehaviour
                 roller3.StopAllCoroutines();
                 roller4.StopAllCoroutines();
                 roller5.StopAllCoroutines();
+                for(int i = 0; i<5; i++)
+                {
+                    if (bets[i] == standings[i])
+                    {
+                        Debug.Log("You got bet " + i + " correct");
+                    }
+                    else
+                    {
+                        Debug.Log("You got bet " + i + " incorrrect");
+                    }
+                }
                 break;
             }
             if (roller1.rollTotal >= 100 && one)
             {
                 Debug.Log("Lemon wins " + places[i]);
+                standings.Add("Lemon");
                 switch (i)
                 {
                     case 0:
                         First.sprite = Lemon.sprite;
                         place1.SetActive(true);
+                        FinalText.SetActive(true);
                         break;
                     case 1:
                         Second.sprite = Lemon.sprite;
@@ -116,11 +140,13 @@ public class Controller : MonoBehaviour
             if (roller2.rollTotal >= 100 && two)
             {
                 Debug.Log("Carrot wins " + places[i]);
+                standings.Add("Carrot");
                 switch (i)
                 {
                     case 0:
                         First.sprite = Carrot.sprite;
                         place1.SetActive(true);
+                        FinalText.SetActive(true);
                         break;
                     case 1:
                         Second.sprite = Carrot.sprite;
@@ -148,11 +174,13 @@ public class Controller : MonoBehaviour
             if (roller3.rollTotal >= 100 && three)
             {
                 Debug.Log("Cherry wins " + places[i]);
+                standings.Add("Cherry");
                 switch (i)
                 {
                     case 0:
                         First.sprite = Cherry.sprite;
                         place1.SetActive(true);
+                        FinalText.SetActive(true);
                         break;
                     case 1:
                         Second.sprite = Cherry.sprite;
@@ -180,11 +208,13 @@ public class Controller : MonoBehaviour
             if (roller4.rollTotal >= 100 && four)
             {
                 Debug.Log("Grape wins " + places[i]);
+                standings.Add("Grape");
                 switch (i)
                 {
                     case 0:
                         First.sprite = Grape.sprite;
                         place1.SetActive(true);
+                        FinalText.SetActive(true);
                         break;
                     case 1:
                         Second.sprite = Grape.sprite;
@@ -212,11 +242,13 @@ public class Controller : MonoBehaviour
             if (roller5.rollTotal >= 100 && five)
             {
                 Debug.Log("Apple wins " + places[i]);
+                standings.Add("Apple");
                 switch (i)
                 {
                     case 0:
                         First.sprite = Apple.sprite;
                         place1.SetActive(true);
+                        FinalText.SetActive(true);
                         break;
                     case 1:
                         Second.sprite = Apple.sprite;
@@ -252,18 +284,23 @@ public class Controller : MonoBehaviour
         {
             case "Lemon":
                 BetSprites[betcounter].GetComponent<Image>().sprite = Lemon.sprite;
+                BetSpritesTop[betcounter].GetComponent<Image>().sprite = Lemon.sprite;
                 break;
             case "Cherry":
                 BetSprites[betcounter].GetComponent<Image>().sprite = Cherry.sprite;
+                BetSpritesTop[betcounter].GetComponent<Image>().sprite = Cherry.sprite;
                 break;
             case "Carrot":
                 BetSprites[betcounter].GetComponent<Image>().sprite = Carrot.sprite;
+                BetSpritesTop[betcounter].GetComponent<Image>().sprite = Carrot.sprite;
                 break;
             case "Grape":
                 BetSprites[betcounter].GetComponent<Image>().sprite = Grape.sprite;
+                BetSpritesTop[betcounter].GetComponent<Image>().sprite = Grape.sprite;
                 break;
             case "Apple":
                 BetSprites[betcounter].GetComponent<Image>().sprite = Apple.sprite;
+                BetSpritesTop[betcounter].GetComponent<Image>().sprite = Apple.sprite;
                 break;
         }
         betcounter++;
@@ -272,5 +309,10 @@ public class Controller : MonoBehaviour
         {
             PlayButton.SetActive(true);
         }
+    }
+
+    public void Restart()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
