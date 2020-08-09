@@ -37,12 +37,32 @@ public class Controller : MonoBehaviour
     public GameObject place5;
 
     public GameObject finishline;
+
+    public GameObject FirstBet;
+    public GameObject SecondBet;
+    public GameObject ThirdBet;
+    public GameObject FourthBet;
+    public GameObject FifthBet;
+    GameObject[] BetSprites;
+
+    public GameObject PlayButton;
+
+    int betcounter = 0;
     List<string> bets = new List<string>();
     // Update is called once per frame
     void Start()
     {
-        //finishline.transform.position = new Vector3((Screen.width - 100), finishline.transform.position.y, finishline.transform.position.z);
+        BetSprites = new GameObject[] { FirstBet, SecondBet, ThirdBet, FourthBet, FifthBet };
         StartCoroutine(Controllers());
+    }
+
+    public void StartRace()
+    {
+        roller1.StartRolling();
+        roller2.StartRolling();
+        roller3.StartRolling();
+        roller4.StartRolling();
+        roller5.StartRolling();
     }
     
     IEnumerator Controllers()
@@ -51,6 +71,7 @@ public class Controller : MonoBehaviour
         {
             yield return new WaitForSeconds(.5f);
 
+            //Race Over
             if (i >= 5)
             {
                 roller1.StopAllCoroutines();
@@ -227,9 +248,29 @@ public class Controller : MonoBehaviour
     public void PlaceBetOn(string fruit)
     {
         bets.Add(fruit);
-        foreach (string fruits in bets)
+        switch (fruit)
         {
-            Debug.Log(fruits);
+            case "Lemon":
+                BetSprites[betcounter].GetComponent<Image>().sprite = Lemon.sprite;
+                break;
+            case "Cherry":
+                BetSprites[betcounter].GetComponent<Image>().sprite = Cherry.sprite;
+                break;
+            case "Carrot":
+                BetSprites[betcounter].GetComponent<Image>().sprite = Carrot.sprite;
+                break;
+            case "Grape":
+                BetSprites[betcounter].GetComponent<Image>().sprite = Grape.sprite;
+                break;
+            case "Apple":
+                BetSprites[betcounter].GetComponent<Image>().sprite = Apple.sprite;
+                break;
+        }
+        betcounter++;
+
+        if(betcounter == 5)
+        {
+            PlayButton.SetActive(true);
         }
     }
 }

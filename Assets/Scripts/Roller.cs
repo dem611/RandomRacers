@@ -26,7 +26,7 @@ public class Roller : MonoBehaviour
     void Start()
     {
         DiceArray = new Sprite[] { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 };
-        StartCoroutine(Rolling()); 
+        //StartCoroutine(Rolling()); 
     }
 
 
@@ -83,6 +83,11 @@ public class Roller : MonoBehaviour
 
         gameObject.transform.position = new Vector3(v, gameObject.transform.position.y, gameObject.transform.position.z);
         
+    }
+
+    public void StartRolling()
+    {
+        StartCoroutine(Rolling());
     }
 
     IEnumerator Rolling()
