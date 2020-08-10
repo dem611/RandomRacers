@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Roller : MonoBehaviour
 {
-    int currentRoll;
+    public int currentRoll;
     public int rollTotal = 0;
     public int whichRoller;
     float screenPos;
