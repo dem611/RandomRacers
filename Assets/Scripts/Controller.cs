@@ -329,21 +329,22 @@ public class Controller : MonoBehaviour
 
     public void CalculateWinnings()
     {
-        int bet = 0;
+        float bet = 0f;
         switch (BetDD.value)
         {
             case 0:
-                bet = 10;
+                bet = 10f;
                 break;
             case 1:
-                bet = 100;
+                bet = 100f;
                 break;
             case 2:
-                bet = 1000;
+                bet = 1000f;
                 break;
         }
 
         List<int> winnings = new List<int>();
+        List<bool> winningsbool = new List<bool>();
 
         int countwins = 0;
         for (int i = 0; i < 5; i++)
@@ -351,30 +352,34 @@ public class Controller : MonoBehaviour
             if (bets[i] == standings[i])
             {
                 winnings.Add(5-i);
+                winningsbool.Add(true);
                 countwins++;
                 Debug.Log("You got bet " + i + " correct");
             }
             else
             {
                 winnings.Add(1);
+                winningsbool.Add(false);
                 Debug.Log("You got bet " + i + " incorrrect");
             }
         }
-        
 
-        foreach (int ints in winnings){
-            if (ints != 1)
-            {
-                bet = bet * ints / 2;
-            }
-        }
+        float win = 0f;
+        //Match ANY
 
+        win = countwins * bet * .65f;
+
+
+
+     
+
+        win = Mathf.RoundToInt(win);
         
         if(countwins == 0)
         {
-            bet = 0;
+            win = 0f;
         }
-        WinAmount.text = bet.ToString();
+        WinAmount.text = win.ToString();
         
 
     }

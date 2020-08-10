@@ -96,10 +96,10 @@ public class Roller : MonoBehaviour
         StartCoroutine(RollAnim());
         while (true)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(.5f);
             isPaused = true;
             Roll();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(.5f);
             isPaused = false;
         }
     }
