@@ -8557,12 +8557,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6116ba5d9dcfdab48b35db61b12d9880, type: 3}
-    m_FontSize: 40
+    m_FontSize: 34
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -8577,7 +8577,12 @@ MonoBehaviour:
     your bets depending on ordered race placements, final dice rolls, and final scores!
 
     The
-    more you get right, the more you win! Have Fun!'
+    more you get right, the more you win!
+
+    Get a multiplier bonus if you sequentially
+    get the order right starting from first place!
+
+    Have Fun!'
 --- !u!222 &2023784166
 CanvasRenderer:
   m_ObjectHideFlags: 0
