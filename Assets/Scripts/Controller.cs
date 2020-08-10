@@ -367,18 +367,48 @@ public class Controller : MonoBehaviour
         float win = 0f;
         //Match ANY
 
-        win = countwins * bet * .65f;
+        win = countwins * bet * .3f;
 
-
-
-     
-
-        win = Mathf.RoundToInt(win);
-        
-        if(countwins == 0)
+        if (winningsbool[4] &&
+            winningsbool[3] &&
+            winningsbool[2] &&
+            winningsbool[1] &&
+            winningsbool[0])
+        {
+            win = win * 50;
+        }else 
+            if(winningsbool[3] &&
+            winningsbool[2] &&
+            winningsbool[1] &&
+            winningsbool[0])
+        {
+            win = win * 20;
+        }else
+            if(winningsbool[2] &&
+            winningsbool[1] &&
+            winningsbool[0])
+        {
+            win = win * 10;
+        }else
+            if(winningsbool[1] &&
+            winningsbool[0])
+        {
+            win = win * 4;
+        }else
+            if (winningsbool[0])
+        {
+            win = win * 2;
+        }
+        else if(countwins == 0)
         {
             win = 0f;
         }
+
+
+
+        win = Mathf.RoundToInt(win);
+        
+        
         WinAmount.text = win.ToString();
         
 
